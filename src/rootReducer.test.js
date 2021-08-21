@@ -1,10 +1,10 @@
 import rootReducer from "./rootReducer";
-import { createReducer } from '@reduxjs/toolkit'
+import data from "./data.json";
 
-let reducer = rootReducer.reducer
+const INITIAL_STATE = { inventory: data.products, cart: [] };
 
 test('contains default inventory', () => {
-    const state = reducer(undefined,{})
+    const state = rootReducer(INITIAL_STATE,{})
     expect(state.inventory.length).toBe(6)
     testComponent()
 })

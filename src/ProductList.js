@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 function ProductList() {
   const inventory = useSelector(st => st.inventory);
-
+  console.log(inventory)
   const dispatch = useDispatch();
   // add a new Product
   const add = id => {
@@ -21,9 +21,6 @@ function ProductList() {
       remove={remove}
       key={inventory[key].name}
       name={inventory[key].name}
-      price={inventory[key].price}
-      description={inventory[key].description}
-      image_url={inventory[key].image_url}
       add={add}
       id={key}
     />

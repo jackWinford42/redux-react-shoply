@@ -3,8 +3,8 @@ import Product from "./Product";
 import { useSelector, useDispatch } from "react-redux";
 
 function Cart() {
-  const inventory = useSelector(st => st.inventory);
-  console.log(inventory)
+  const cart = useSelector(st => st.cart);
+  console.log(cart)
   const dispatch = useDispatch();
   // add a new Product
   const add = id => {
@@ -16,16 +16,13 @@ function Cart() {
     dispatch({type: "DELETE", id:id})
   };
 
-  const ProductComponents = Object.keys(inventory).map(key => (
+  const ProductComponents = cart.map(product => (
     <Product
       remove={remove}
-      key={inventory[key].name}
-      name={inventory[key].name}
-      price={inventory[key].price}
-      description={inventory[key].description}
-      image_url={inventory[key].image_url}
+      key={product[Object.keys(product)[0]].name}
+      name={product[Object.keys(product)[0]].name}
       add={add}
-      id={key}
+      id={Object.keys(product)[0]}
     />
   ));
 

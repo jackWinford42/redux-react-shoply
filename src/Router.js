@@ -6,35 +6,43 @@ import {
   Link
 } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem
+} from 'reactstrap';
 import ProductList from "./ProductList";
 import ProductDetail from "./ProductDetail";
 import Cart from "./Cart";
+import "./Router.css";
 
 export default function NavRouter() {
   const cart = useSelector(st => st.cart)
+
   return (
     <Router>
       <div>
-        <ul>
-          <p>
-            <Link to="/">Catalogue</Link>
-          </p>
-          <p>
-            <Link to="/cart">Cart</Link>
-          </p>
-          <p>Cart has #{cart.length} Items</p>
-        </ul>
+        <Navbar color="light" light>
+          <NavbarBrand href="/">shoply</NavbarBrand>
+          <Nav className="mr-auto" id="nav" navbar>
+            <NavItem>
+              <Link className="navLink" to="/">Catalogue</Link>
+              <Link className="navLink" to="/cart">Cart</Link>
+            </NavItem>
+          </Nav>
+          <span id="cartCount"><strong>Cart has #{cart.length} Items</strong></span>
+        </Navbar>
 
         <Switch>
-          <Route path="/:product">
-            <ProductDetail />
+          <Route path="/products/:id">
+            <ProductDetail/>
           </Route>
           <Route path="/cart">
-            <Cart />
+            <Cart/>
           </Route>
           <Route path="/">
-            <ProductList />
+            <ProductList/>
           </Route>
         </Switch>
       </div>

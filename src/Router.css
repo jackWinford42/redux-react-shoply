@@ -1,0 +1,21 @@
+#cartCount {
+    float: right;
+}
+
+#nav {
+    height: 1em;
+    width: 80vw;
+    text-align:end;
+}
+
+.navItem {
+    position:absolute;
+    padding-left: 70px;
+    top: 20px;
+}
+
+.navLink {
+    padding-left: 3em;
+    text-decoration: none;
+    color: black;
+}

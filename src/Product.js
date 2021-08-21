@@ -1,7 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./Product.css";
 
-export default function Product({ id, name, price, description, image_url, remove, add }) {
+export default function Product({ id, name, remove, add }) {
 
   const handleAdd = () => add(id);
 
@@ -9,10 +10,7 @@ export default function Product({ id, name, price, description, image_url, remov
 
   return (
     <div className="Product">
-      <h2>{name}</h2><br></br>
-      <img src={image_url} alt={name}/><br></br>
-      <span>{price}</span><br></br>
-      <span>{description}</span><br></br>
+      <Link to={`/products/${id}`}><h2>{name}</h2></Link><br></br>
       <button onClick={handleAdd}>Add to cart</button>
       <button onClick={handleRemove}>Remove from cart</button>
     </div>

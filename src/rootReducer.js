@@ -5,9 +5,11 @@ const INITIAL_STATE = { inventory: data.products, cart: [] };
 export default function rootReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case "ADD":
+            console.log(action.id)
             const newId = action.id;
             return { ...state, cart: [...state.cart, {[newId]: state.inventory[newId]}] };
         case "DELETE":
+            console.log(action.id)
             let doOnce = true;
             function filterOnce(product) {
                 if (Object.keys(product)[0] === action.id && doOnce) {
